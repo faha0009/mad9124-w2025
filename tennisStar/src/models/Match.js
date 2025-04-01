@@ -9,32 +9,29 @@ const matchSchema = new Schema(
       required: true,
     },
     player1: {
-      type: String,
+      type: Schema.Types.ObjectId,
+      ref: "User",
       required: true,
-      minLength: 3,
-      maxLength: 64,
     },
     player2: {
-      type: String,
+      type: Schema.Types.ObjectId,
+      ref: "User",
       required: true,
-      minLength: 3,
-      maxLength: 64,
     },
     sets: {
-      type: [[Number]], 
+      type: [[Number]],
       required: true,
       validate: {
         validator: function (sets) {
           return sets.length >= 3 && sets.length <= 5;
         },
-        message: "Sets must contain at least 3 and at most 5 sets",
+        message: "Sets must contain at least 3 and at most 5 sets..",
       },
     },
     winner: {
-      type: String,
+      type: Schema.Types.ObjectId,
+      ref: "User",
       required: true,
-      minLength: 3,
-      maxLength: 64,
     },
   },
   {
